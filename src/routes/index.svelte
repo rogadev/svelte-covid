@@ -4,11 +4,14 @@
   import Footer from '../components/sections/footer_section.svelte'
   import Spinner from '../components/ui/spinner.svelte'
 
-  import useFetchCache from './useFetchCache.js'
+  import { useFetchCache, processing, data, error } from '../data/stores.js'
 
   let loading = true
+  processing.subscribe((value) => {
+    loading = value
+  })
 
-  let summaryData = useFetchCache(loading)
+  let summaryData = useFetchCache()
 
   const getPopulation = (region) => {
     switch (region) {
