@@ -4,6 +4,8 @@ export const processing = writable(false)
 export const error = writable({})
 export const data = writable({})
 
+// TODO Won't work because localStorage not accessible here either.
+
 export const useFetchCache = async () => {
   processing.set(true)
   // Check local storage for cached data
